@@ -1,0 +1,34 @@
+body{
+    background-color: lightskyblue;
+    color: black;
+    text-align: center;
+    font-family: monospace;
+}
+
+a{
+    color:seagreen;
+    text-decoration: none;
+
+}
+
+a:hover{
+    color:blue;
+    text-decoration: none;
+}
+
+main{
+    text-align: center;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+h2{
+    text-align: center;
+}
+img{
+    width: 55%
+}
+figure{
+    text-align: center;
+    font-style: italic;
+}
