@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Enthusiast Hub</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #8b5a2b; }
+        header { background: #333; color: white; padding: 1rem; text-align: center; }
+        nav { background: #444; padding: 0.5rem; text-align: center; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; cursor: pointer; }
+        section { padding: 20px; background: white; margin: 10px; border-radius: 5px; display: none; }
+        section.active { display: block; }
+        figure { text-align: center; }
+        figcaption { font-style: italic; }
+    </style>
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            showSection('history'); 
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    showSection(this.getAttribute('data-section'));
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Chess Hobby Site</h1>
+        <nav>
+            <a href="#" data-section="history">History</a> ★
+            <a href="#" data-section="strategies">Strategies</a> ★
+            <a href="#" data-section="famous-players">Famous Players</a>
+        </nav>
+    </header>
+   
+    
+    <section id="history" class="active">
+        <h2>History of Chess</h2>
+        <p>Chess is one of the oldest strategy games, with origins tracing back to India in the 6th century.</p>
+        <p>It evolved through various cultures before becoming the modern game we know and play today.</p>
+        <figure>
+            <img src="images/historyofchess.jpg" alt="Ancient chess game depiction" width="400">
+            <figcaption>An artistic image of early chess in medieval Europe.</figcaption>
+        </figure>
+        <p><em>Prompt used: ""A medieval picture of people playing an early version of chess either in early India or early Europe."</em></p>
+    </section>
+    
+    <section id="strategies">
+        <h2>Chess Strategies</h2>
+        <p>Mastering chess requires understanding openings, mid-game tactics, and endgame play.</p>
+        <p>Key strategies include controlling the center, piece development, and king safety.</p>
+        <figure>
+            <img src="images/chess strategies.png" alt="Chess board with strategic moves highlighted" width="400">
+            <figcaption>A chessboard with key strategic moves highlighted.</figcaption>
+        </figure>
+        <p><em>Prompt used: "Show a picture of a chessboard with highlighted strategic moves and tactics"</em></p>
+    </section>
+   
+    <section id="famous-players">
+        <h2>Famous Chess Players</h2>
+        <p>Many legendary players have shaped the game, from Bobby Fischer to Magnus Carlsen and Hikaru Nakamura.</p>
+        <p>Their games and contributions continue to inspire new generations of players and strategies/tactics.</p>
+        <figure>
+            <img src="images/chessplayers.png" alt="Portraits of famous chess players" width="400">
+            <figcaption>A pricture of arguagbly the top 10 best chess players.</figcaption>
+        </figure>
+        <p><em>Prompt used: "Show a realistic picture of the top 10 chess players in an image."</em></p>
+    </section>
+</body>
+</html>
+
+
+
