@@ -1,34 +1,60 @@
-body{
+
+body {
     background-color: lightskyblue;
     color: black;
     text-align: center;
     font-family: monospace;
 }
 
-a{
-    color:seagreen;
-    text-decoration: none;
-
-}
-
-a:hover{
-    color:blue;
+a {
+    color: seagreen;
     text-decoration: none;
 }
 
-main{
-    text-align: center;
-    margin-left: 20%;
-    margin-right: 20%;
+a:hover {
+    color: blue;
+    text-decoration: none;
 }
 
-h2{
+main {
+    max-width: 1200px; 
+    width: 90%; 
+    margin: 0 auto;
     text-align: center;
 }
-img{
-    width: 55%
+
+h2 {
+    text-align: center;
 }
-figure{
+
+img {
+    width: 55%;
+}
+
+figure {
     text-align: center;
     font-style: italic;
+}
+
+
+@media screen and (max-width: 1024px) {
+    main {
+        width: 95%;
+    }
+
+    img {
+        width: 70%;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    main {
+        
+        padding: 0 10px;
+    }
+
+    img {
+        width: 100%;
+    }
 }
