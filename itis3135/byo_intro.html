@@ -1,0 +1,119 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BYO Intro</title>
+  <script defer>
+    let courseCount = 0;
+
+    function addCourse() {
+      const div = document.createElement("div");
+      div.id = `courseDiv${courseCount}`;
+
+      const input = document.createElement("input");
+      input.type = "text";
+      input.placeholder = "Enter course name";
+      input.className = "courseInput";
+
+      const delButton = document.createElement("button");
+      delButton.type = "button";
+      delButton.textContent = "Delete";
+      delButton.onclick = () => div.remove();
+
+      div.appendChild(input);
+      div.appendChild(delButton);
+      document.getElementById("courses").appendChild(div);
+      courseCount++;
+    }
+
+    function resetForm() {
+      document.getElementById("result").innerHTML = "";
+      document.getElementById("introForm").reset();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("introForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const name = document.getElementById("name").value;
+        const mascot = document.getElementById("mascot").value;
+        const imgCaption = document.getElementById("imgCaption").value;
+        const personalBg = document.getElementById("personalBg").value;
+        const academicBg = document.getElementById("academicBg").value;
+        const webBg = document.getElementById("webBg").value;
+        const platform = document.getElementById("platform").value;
+        const funnyThing = document.getElementById("funnyThing").value;
+        const anythingElse = document.getElementById("anythingElse").value;
+
+        const courses = Array.from(document.querySelectorAll(".courseInput")).map(input => input.value);
+
+        let resultHTML = `
+          <ul>
+            <li><strong>Name:</strong> ${name}</li>
+            <li><strong>Mascot:</strong> ${mascot}</li>
+            <li><strong>Image Caption:</strong> ${imgCaption}</li>
+            <li><strong>Personal Background:</strong> ${personalBg}</li>
+            <li><strong>Academic Background:</strong> ${academicBg}</li>
+            <li><strong>Background in Web Development:</strong> ${webBg}</li>
+            <li><strong>Primary Computer Platform:</strong> ${platform}</li>
+            <li><strong>Courses Currently Taking:</strong><ul>`;
+
+        courses.forEach(course => {
+          resultHTML += `<li>${course}</li>`;
+        });
+
+        resultHTML += `</ul></li>
+            <li><strong>Funny Thing:</strong> ${funnyThing}</li>
+            <li><strong>Anything Else:</strong> ${anythingElse}</li>
+          </ul>
+        `;
+
+        document.getElementById("result").innerHTML = resultHTML;
+      });
+    });
+  </script>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <header id="header"></header>
+
+  <main>
+    <h2>BYO Intro Page</h2>
+    <h3>Fill out the form below so we can create your intro page</h3>
+    <form id="introForm">
+      <label>Name: <input type="text" id="name" required></label><br>
+      <label>Mascot: <input type="text" id="mascot" required></label><br>
+      <label>Image: <input type="file" id="image" accept="image/png, image/jpeg" required></label><br>
+      <label>Image Caption: <input type="text" id="imgCaption" required></label><br>
+      <label>Personal Background: <input type="text" id="personalBg" required></label><br>
+      <label>Academic Background: <input type="text" id="academicBg" required></label><br>
+      <label>Background in Web Development: <input type="text" id="webBg" required></label><br>
+      <label>Primary Computer Platform: <input type="text" id="platform" required></label><br>
+
+      <div id="courses">
+        <label>Courses Currently Taking:</label>
+        <button type="button" onclick="addCourse()">Add Course</button>
+      </div><br>
+
+      <label>Fun Facts? <input type="text" id="funnyThing"></label><br>
+      <label>Anything else? <input type="text" id="anythingElse"></label><br>
+      <label><input type="checkbox" id="agree" required> I understand that what is on this page is not password protected...</label><br><br>
+
+      <input type="submit" value="Submit">
+      <input type="reset" value="Reset">
+    </form>
+
+    <div id="result"></div>
+    <button onclick="resetForm()">Reset Page</button>
+  </main>
+
+  <footer id="footer">
+    <a href="https://validator.w3.org/check?uri=referer" id="validation_link_html">
+        <img style="border:0;width:88px;height:31px" src="https://mytienhoang.github.io/itis3135/z_archives/html_validation.png" alt="Valid HTML!">
+    </a>
+    
+    <a href="https://jigsaw.w3.org/css-validator/check/referer" id="validation_link_css">
+        <img style="border:0;width:88px;height:31px" src="https://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS!">
+    </a>
+  </footer>
+</body>
+</html>
