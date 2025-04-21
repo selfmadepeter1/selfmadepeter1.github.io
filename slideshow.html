@@ -3,37 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <title>Slideshow Gallery</title>
-  <link rel="stylesheet" href="default.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="scripts/slideshow.js"></script>
+  <link rel="stylesheet" href="itis3135/styles/default.css">
+  <script src="itis3135/scripts/slideshow.js" defer></script> <!-- Load JS after HTML -->
   <style>
+    * { box-sizing: border-box; }
+
     .slideshow-container {
-      max-width: 700px;
       position: relative;
+      max-width: 700px;
       margin: auto;
+      text-align: center;
     }
+
     .mySlides {
       display: none;
     }
-    img {
+
+    .slideshow-image {
       width: 100%;
       height: auto;
     }
-    .caption {
+
+    .caption-container {
       text-align: center;
-      font-size: 20px;
-      padding: 8px;
+      background-color: #222;
+      color: #fff;
+      padding: 10px;
+      font-size: 18px;
     }
-    .thumbnail-container {
+
+    .thumbnail-row {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       margin-top: 20px;
     }
-    .thumbnail-container img {
+
+    .thumbnail-row img {
       width: 80px;
+      height: auto;
       margin: 5px;
       cursor: pointer;
+      opacity: 0.6;
+    }
+
+    .thumbnail-row img.active, .thumbnail-row img:hover {
+      opacity: 1;
+      border: 2px solid #555;
     }
   </style>
 </head>
@@ -42,73 +58,63 @@
 <!--#include virtual="header.html" -->
 
 <h1>Slideshow Gallery - Peter Yale</h1>
+<p>Click the thumbnails to view each image</p>
 
 <div class="slideshow-container">
+
     <div class="mySlides" style="display: block;">
-        <img src="images/pizza.jpg" alt="Pizza">
-        <div class="caption">P - for Pizza (Peter)</div>
+        <img src="itis3135/images/pizza.png" class="slideshow-image" alt="P - for Pizza (Peter)">
       </div>
 
   <div class="mySlides">
-    <img src="itis3135/images/pizza.png" alt="Pizza">
-    <div class="caption">P - for Pizza (Peter)</div>
+    <img src="itis3135/images/elephant.png" class="slideshow-image" alt="E - for Elephant (Peter)">
   </div>
 
   <div class="mySlides">
-    <img src="itis3135/images/elephant.png" alt="Elephant">
-    <div class="caption">E - for Elephant (Peter)</div>
+    <img src="itis3135/images/tennis ball.png" class="slideshow-image" alt="T - for Tennis Ball (Peter)">
   </div>
 
   <div class="mySlides">
-    <img src="itis3135/images/tennis ball.png" alt="Tennis Ball">
-    <div class="caption">T - for Tennis Ball (Peter)</div>
+    <img src="itis3135/images/jelw.png" class="slideshow-image" alt="E - for Earrings (Peter)">
   </div>
 
   <div class="mySlides">
-    <img src="itis3135/images/jelw.png" alt="Earrings">
-    <div class="caption">E - for Earrings (Peter)</div>
+    <img src="itis3135/images/rose.png" class="slideshow-image" alt="R - for Rose (Peter)">
   </div>
 
   <div class="mySlides">
-    <img src="itis3135/images/rose.png" alt="Rose">
-    <div class="caption">R - for Rose (Peter)</div>
+    <img src="itis3135/images/yoyo.png" class="slideshow-image" alt="Y - for Yoyo (Yale)">
   </div>
 
   <div class="mySlides">
-    <img src="itis3135/images/yoyo.png" alt="Yoyo">
-    <div class="caption">Y - for Yoyo (Yale)</div>
+    <img src="itis3135/images/apples.webp" class="slideshow-image" alt="A - for Apple (Yale)">
   </div>
 
   <div class="mySlides">
-    <img src="images/apple.jpg" alt="Apple">
-    <div class="caption">A - for Apple (Yale)</div>
+    <img src="itis3135/images/laptop.png" class="slideshow-image" alt="L - for Laptop (Yale)">
   </div>
 
   <div class="mySlides">
-    <img src="itis3135/images/laptop.png" alt="Laptop">
-    <div class="caption">L - for Laptop (Yale)</div>
-  </div>
-
-  <div class="mySlides">
-    <img src="itis3135/images/egg.png" alt="Egg">
-    <div class="caption">E - for Egg (Yale)</div>
+    <img src="itis3135/images/egg.png" class="slideshow-image" alt="E - for Egg (Yale)">
   </div>
 
 </div>
 
-<div class="thumbnail-container">
-  <img src="itis3135/images/pizza.png" onclick="showSlide(0)" alt="Pizza Thumbnail">
-  <img src="itis3135/images/elephant.png" onclick="showSlide(1)" alt="Elephant Thumbnail">
-  <img src="itis3135/images/tennis ball.png" onclick="showSlide(2)" alt="Tennis Ball Thumbnail">
-  <img src="itis3135/images/jelw.png" onclick="showSlide(3)" alt="Earrings Thumbnail">
-  <img src="itis3135/images/rose.png" onclick="showSlide(4)" alt="Rose Thumbnail">
-  <img src="itis3135/images/yoyo.png" onclick="showSlide(5)" alt="Yoyo Thumbnail">
-  <img src="itis3135/images/apples.webp" onclick="showSlide(6)" alt="Apple Thumbnail">
-  <img src="itis3135/images/laptop.png" onclick="showSlide(7)" alt="Laptop Thumbnail">
-  <img src="itis3135/images/egg.png" onclick="showSlide(8)" alt="Egg Thumbnail">
+<div class="caption-container">
+  <p id="caption"></p>
 </div>
 
-<!-- AI Prompts Section -->
+<div class="thumbnail-row">
+  <img class="demo" src="itis3135/images/pizza.png" onclick="currentSlide(1)" alt="P - for Pizza (Peter)">
+  <img class="demo" src="itis3135/images/elephant.png" onclick="currentSlide(2)" alt="E - for Elephant (Peter)">
+  <img class="demo" src="itis3135/images/tennis ball.png" onclick="currentSlide(3)" alt="T - for Tennis Ball (Peter)">
+  <img class="demo" src="itis3135/images/jelw.png" onclick="currentSlide(4)" alt="E - for Earrings (Peter)">
+  <img class="demo" src="itis3135/images/rose.png" onclick="currentSlide(5)" alt="R - for Rose (Peter)">
+  <img class="demo" src="itis3135/images/yoyo.png" onclick="currentSlide(6)" alt="Y - for Yoyo (Yale)">
+  <img class="demo" src="itis3135/images/apples.webp" onclick="currentSlide(7)" alt="A - for Apple (Yale)">
+  <img class="demo" src="itis3135/images/laptop.png" onclick="currentSlide(8)" alt="L - for Laptop (Yale)">
+  <img class="demo" src="itis3135/images/egg.png" onclick="currentSlide(9)" alt="E - for Egg (Yale)">
+</div>
 <h2>AI Image Prompts</h2>
 <ul>
   <li>Pizza on a plate - generated using DALL-E</li>
@@ -117,7 +123,7 @@
   <li>Fancy gold earrings - generated using DALL-E</li>
   <li>Red rose close-up - generated using DALL-E</li>
   <li>Classic yoyo toy - generated using DALL-E</li>
-  <li>red apple on a white background - generated using DALL-E</li>
+  <li>Red apple on a white background - generated using DALL-E</li>
   <li>Laptop on a desk - generated using DALL-E</li>
   <li>Egg in a bowl - generated using DALL-E</li>
 </ul>
@@ -126,24 +132,16 @@
 <h2>Notes</h2>
 <ul>
   <li>Help: Used W3Schools tutorial for slideshow and dynamic include examples.</li>
-  <li>Sites: w3schools.com </li>
+  <li>Sites: w3schools.com</li>
   <li>People: None</li>
-  <li>Challenges: Resizing all the images correctly to be landscape.</li>
+  <li>Challenges: Resizing all the images correctly to landscape.</li>
   <li>Statement: This is my work, I did not copy and paste someone else's code.</li>
 </ul>
 
 <p>Signed, <br>
 Peter Yale, 4/21/2025 4:15 PM</p>
 
-<footer><a href="https://validator.w3.org/check?uri=referer" id="validation_link_html">
-    <img style="border:0;width:88px;height:31px" src="https://mytienhoang.github.io/itis3135/z_archives/html_validation.png" alt="Valid HTML!">
-</a>
-
-<a href="https://jigsaw.w3.org/css-validator/check/referer" id="validation_link_css">
-    <img style="border:0;width:88px;height:31px" src="https://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS!">
-</a></footer>
-
-
+<footer></footer>
 
 </body>
 </html>
